@@ -91,14 +91,14 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/services">
-                <a className="btn-dashed bg-primary text-primary-foreground border-primary hover:bg-primary/90 inline-flex items-center justify-center gap-2">
+                <span className="btn-dashed bg-primary text-primary-foreground border-primary hover:bg-primary/90 inline-flex items-center justify-center gap-2 cursor-pointer">
                   Our Services <ArrowRight size={18} />
-                </a>
+                </span>
               </Link>
               <Link href="/contact">
-                <a className="btn-dashed border-white text-white hover:bg-white hover:text-foreground inline-flex items-center justify-center gap-2">
+                <span className="btn-dashed border-white text-white hover:bg-white hover:text-foreground inline-flex items-center justify-center gap-2 cursor-pointer">
                   Book Now <ArrowRight size={18} />
-                </a>
+                </span>
               </Link>
             </div>
           </motion.div>
@@ -134,10 +134,10 @@ export default function Home() {
                   <p className="text-muted-foreground mb-6">{service.description}</p>
                   <div className="flex gap-3">
                     <Link href="/services">
-                      <a className="btn-dashed">Learn More</a>
+                      <span className="btn-dashed cursor-pointer">Learn More</span>
                     </Link>
                     <Link href="/contact">
-                      <a className="btn-dashed">Book Now</a>
+                      <span className="btn-dashed cursor-pointer">Book Now</span>
                     </Link>
                   </div>
                 </div>
@@ -159,9 +159,9 @@ export default function Home() {
               Quick and convenient booking for all your beauty needs. Our expert team is ready to pamper you.
             </p>
             <Link href="/contact">
-              <a className="btn-dashed bg-primary text-primary-foreground border-primary hover:bg-primary/90 inline-flex items-center justify-center gap-2 px-8 py-4">
+              <span className="btn-dashed bg-primary text-primary-foreground border-primary hover:bg-primary/90 inline-flex items-center justify-center gap-2 px-8 py-4 cursor-pointer">
                 Schedule Now <ArrowRight size={20} />
-              </a>
+              </span>
             </Link>
           </ScrollReveal>
         </div>
@@ -191,9 +191,9 @@ export default function Home() {
                   <h3 className="text-xl font-bold mb-3">{post.title}</h3>
                   <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <Link href="/blog">
-                    <a className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center gap-2">
+                    <span className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center gap-2 cursor-pointer">
                       Read More <ArrowRight size={16} />
-                    </a>
+                    </span>
                   </Link>
                 </div>
               </ScrollReveal>
