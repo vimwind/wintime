@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
+import { useAuth } from '@/_core/hooks/useAuth';
 
 /**
  * Home Page - Modern Luxury Minimalism
@@ -10,6 +11,10 @@ import ScrollReveal from '@/components/ScrollReveal';
  */
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const services = [
     {
       id: 1,
