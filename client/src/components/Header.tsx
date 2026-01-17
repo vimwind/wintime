@@ -18,25 +18,25 @@ export default function Header() {
       <nav className="container flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center gap-2 font-bold text-2xl hover:opacity-80 transition-opacity">
+          <span className="flex items-center gap-2 font-bold text-2xl hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <span className="text-primary-foreground text-sm font-bold">B</span>
             </div>
             <span className="hidden sm:inline">Beautyeo</span>
-          </a>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
-              <a className="text-foreground hover:text-primary transition-colors font-medium text-sm">
+              <span className="text-foreground hover:text-primary transition-colors font-medium text-sm cursor-pointer">
                 {item.label}
-              </a>
+              </span>
             </Link>
           ))}
           <Link href="/contact">
-            <a className="btn-dashed">Book Now</a>
+            <span className="btn-dashed cursor-pointer">Book Now</span>
           </Link>
         </div>
 
@@ -60,21 +60,21 @@ export default function Header() {
           <div className="container py-4 flex flex-col gap-4">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
-                <a
-                  className="text-foreground hover:text-primary transition-colors font-medium"
+                <span
+                  className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </span>
               </Link>
             ))}
             <Link href="/contact">
-              <a
-                className="btn-dashed w-full text-center"
+              <span
+                className="btn-dashed w-full text-center cursor-pointer"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Book Now
-              </a>
+              </span>
             </Link>
           </div>
         </motion.div>
