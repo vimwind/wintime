@@ -88,7 +88,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between text-sm opacity-80">
-          <p>&copy; 2024 Beautyeo Salon. All rights reserved.</p>
+          <p>&copy; 2026 Beautyeo Salon. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:opacity-100 transition-opacity">Privacy Policy</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Terms of Service</a>
