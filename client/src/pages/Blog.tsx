@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
@@ -121,9 +122,11 @@ export default function Blog() {
                       <User size={16} className="text-primary" />
                       <span className="font-semibold">{featuredPost.author}</span>
                     </div>
-                    <button className="btn-dashed mt-6">
-                      Read Full Article
-                    </button>
+                    <Link href={`/blog/${featuredPost.id}`}>
+                      <span className="btn-dashed mt-6 cursor-pointer">
+                        Read Full Article
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -165,9 +168,11 @@ export default function Blog() {
                         <User size={14} className="text-primary" />
                         <span className="font-semibold text-xs">{post.author}</span>
                       </div>
-                      <button className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center gap-1">
-                        Read <ArrowRight size={14} />
-                      </button>
+                      <Link href={`/blog/${post.id}`}>
+                        <span className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center gap-1 cursor-pointer">
+                          Read <ArrowRight size={14} />
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
