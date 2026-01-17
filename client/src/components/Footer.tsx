@@ -1,7 +1,12 @@
 import { Link } from 'wouter';
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, Lock } from 'lucide-react';
+import { useAuth } from '@/_core/hooks/useAuth';
+import { getLoginUrl } from '@/const';
 
 export default function Footer() {
+  const { user, isAuthenticated, logout } = useAuth();
+  const isAdmin = user?.role === 'admin';
+
   return (
     <footer className="bg-foreground text-primary-foreground mt-20">
       <div className="container py-16">
@@ -26,22 +31,22 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/services">
-                  <a className="opacity-80 hover:opacity-100 transition-opacity">Services</a>
+                  <span className="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">Services</span>
                 </Link>
               </li>
               <li>
                 <Link href="/about">
-                  <a className="opacity-80 hover:opacity-100 transition-opacity">About</a>
+                  <span className="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">About</span>
                 </Link>
               </li>
               <li>
                 <Link href="/blog">
-                  <a className="opacity-80 hover:opacity-100 transition-opacity">Blog</a>
+                  <span className="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">Blog</span>
                 </Link>
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="opacity-80 hover:opacity-100 transition-opacity">Contact</a>
+                  <span className="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">Contact</span>
                 </Link>
               </li>
             </ul>
@@ -89,9 +94,37 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row items-center justify-between text-sm opacity-80">
           <p>&copy; 2026 Beautyeo Salon. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-6 mt-4 md:mt-0 items-center">
             <a href="#" className="hover:opacity-100 transition-opacity">Privacy Policy</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Terms of Service</a>
+            
+            {/* Admin Login/Logout Button */}
+            <div className="ml-4 pl-4 border-l border-primary-foreground/30">
+              {isAuthenticated && isAdmin ? (
+                <div className="flex items-center gap-3">
+                  <Link href="/admin">
+                    <span className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors cursor-pointer text-xs font-medium">
+                      <Lock size={14} />
+                      Admin
+                    </span>
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="text-xs opacity-70 hover:opacity-100 transition-opacity"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <a
+                  href={getLoginUrl()}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors text-xs font-medium"
+                >
+                  <Lock size={14} />
+                  Admin
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
