@@ -41,3 +41,6 @@
 ## Critical Bugs (Current)
 - [x] New blog posts not displaying on blog page after creation - Fixed imports
 - [x] Blog post edits still not saving to database despite previous fix - Fixed imports
+
+## Critical Bugs (Active)
+- [x] Blog post save failing with error message - Fixed validation to allow null values

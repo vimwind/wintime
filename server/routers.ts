@@ -44,12 +44,12 @@ export const appRouter = router({
         content: z.string().min(1),
         author: z.string().min(1),
         image: z.string().optional(),
-        readTime: z.string().optional(),
-        metaDescription: z.string().max(160).optional(),
-        keywords: z.string().optional(),
+        readTime: z.string().nullable().optional(),
+        metaDescription: z.string().max(160).nullable().optional(),
+        keywords: z.string().nullable().optional(),
         featured: z.number().optional(),
         published: z.number().optional(),
-        publishedAt: z.date().optional(),
+        publishedAt: z.date().nullable().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== 'admin') {
@@ -68,12 +68,12 @@ export const appRouter = router({
         content: z.string().optional(),
         author: z.string().optional(),
         image: z.string().optional(),
-        readTime: z.string().optional(),
-        metaDescription: z.string().max(160).optional(),
-        keywords: z.string().optional(),
+        readTime: z.string().nullable().optional(),
+        metaDescription: z.string().max(160).nullable().optional(),
+        keywords: z.string().nullable().optional(),
         featured: z.number().optional(),
         published: z.number().optional(),
-        publishedAt: z.date().optional(),
+        publishedAt: z.date().nullable().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== 'admin') {
