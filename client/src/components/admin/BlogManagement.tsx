@@ -208,7 +208,7 @@ export default function BlogManagement() {
                     <label className="block text-sm font-medium mb-1">
                       Meta Description
                       <span className="text-xs text-muted-foreground ml-2">
-                        ({(formData.metaDescription as string).length}/160)
+                        ({(formData.metaDescription as string || "").length}/160)
                       </span>
                     </label>
                     <Textarea
@@ -222,9 +222,9 @@ export default function BlogManagement() {
                       maxLength={160}
                     />
                     <p className="text-xs text-muted-foreground mt-1">
-                      {(formData.metaDescription as string).length < 120 && "Too short. Aim for 150-160 characters."}
-                      {(formData.metaDescription as string).length >= 120 && (formData.metaDescription as string).length <= 160 && "✓ Good length"}
-                      {(formData.metaDescription as string).length > 160 && "Too long"}
+                      {((formData.metaDescription as string) || "").length < 120 && "Too short. Aim for 150-160 characters."}
+                      {((formData.metaDescription as string) || "").length >= 120 && ((formData.metaDescription as string) || "").length <= 160 && "✓ Good length"}
+                      {((formData.metaDescription as string) || "").length > 160 && "Too long"}
                     </p>
                   </div>
                   <div>
