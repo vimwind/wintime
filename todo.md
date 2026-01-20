@@ -44,3 +44,8 @@
 
 ## Critical Bugs (Active)
 - [x] Blog post save failing with error message - Fixed validation to allow null values
+
+
+## Deployment
+- [ ] Push project to GitHub
+- [ ] Deploy to Vercel
