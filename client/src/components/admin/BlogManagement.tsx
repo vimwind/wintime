@@ -91,8 +91,9 @@ export default function BlogManagement() {
       });
       setIsCreating(false);
       setEditingId(null);
-      refetch();
+      await refetch();
     } catch (error) {
+      console.error("Error saving blog post:", error);
       toast.error("Failed to save blog post");
     }
   };

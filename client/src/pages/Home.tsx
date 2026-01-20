@@ -138,25 +138,25 @@ export default function Home() {
                 delay={index * 0.1}
                 direction={index % 2 === 0 ? 'left' : 'right'}
               >
-                <Link href={service.href}>
-                  <span className="service-card group cursor-pointer block">
-                    <div className="relative h-64 md:h-80 rounded-xl overflow-hidden mb-6">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground mb-6">{service.description}</p>
-                    <div className="flex gap-3">
-                      <span className="btn-dashed">Learn More</span>
-                      <Link href="/contact">
-                        <span className="btn-dashed cursor-pointer">Book Now</span>
-                      </Link>
-                    </div>
-                  </span>
-                </Link>
+                <div className="service-card group">
+                  <Link href={service.href}>
+                    <span className="block cursor-pointer">
+                      <div className="relative h-64 md:h-80 rounded-xl overflow-hidden mb-6">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                      <p className="text-muted-foreground mb-6">{service.description}</p>
+                      <span className="btn-dashed inline-block">Learn More</span>
+                    </span>
+                  </Link>
+                  <Link href="/contact">
+                    <span className="btn-dashed cursor-pointer inline-block mt-3">Book Now</span>
+                  </Link>
+                </div>
               </ScrollReveal>
             ))}
           </div>

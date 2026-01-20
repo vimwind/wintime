@@ -22,3 +22,6 @@
 - [x] Write tests for blog CRUD operations
 - [x] Write tests for image upload functionality
 - [x] Test end-to-end blog workflow
+
+## Bug Fixes
+- [x] Fix blog post update not saving changes to database

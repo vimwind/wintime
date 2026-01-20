@@ -123,7 +123,10 @@ export async function createBlogPost(post: InsertBlogPost) {
 export async function updateBlogPost(id: number, post: Partial<InsertBlogPost>) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.update(blogPosts).set(post).where(eq(blogPosts.id, id));
+  await db.update(blogPosts).set({
+    ...post,
+    updatedAt: new Date(),
+  }).where(eq(blogPosts.id, id));
 }
 
 export async function deleteBlogPost(id: number) {
