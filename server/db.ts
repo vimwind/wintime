@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, formSubmissions, InsertFormSubmission, pageViews, InsertPageView } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -90,9 +90,6 @@ export async function getUserByOpenId(openId: string) {
 }
 
 // TODO: add feature queries here as your schema grows.
-
-import { blogPosts, formSubmissions, pageViews, InsertBlogPost, InsertFormSubmission, InsertPageView, BlogPost, FormSubmission } from "../drizzle/schema";
-import { desc } from "drizzle-orm";
 
 /**
  * Blog Posts Queries

@@ -37,3 +37,7 @@
 
 ## Bug Fixes (Ongoing)
 - [x] Blog post updates not persisting to database after save - Fixed with proper logging and test coverage
+
+## Critical Bugs (Current)
+- [x] New blog posts not displaying on blog page after creation - Fixed imports
+- [x] Blog post edits still not saving to database despite previous fix - Fixed imports

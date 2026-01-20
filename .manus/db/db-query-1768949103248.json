@@ -1,0 +1,115 @@
+{
+  "query": "SELECT id, title, slug, published, featured FROM blogPosts ORDER BY createdAt DESC LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3LvJmcAqVePG2j4.root --database msCDJ8aaMwX6h8RtTqHoZY --execute SELECT id, title, slug, published, featured FROM blogPosts ORDER BY createdAt DESC LIMIT 15;",
+  "rows": [
+    {
+      "id": "120010",
+      "title": "bc b bb c",
+      "slug": "b b b b ",
+      "published": "0",
+      "featured": "0"
+    },
+    {
+      "id": "120009",
+      "title": "Updated Title",
+      "slug": "test-blog-update-1768946550049",
+      "published": "0",
+      "featured": "0"
+    },
+    {
+      "id": "120008",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768946549299",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120007",
+      "title": "Updated Title",
+      "slug": "test-blog-update-1768946515399",
+      "published": "0",
+      "featured": "0"
+    },
+    {
+      "id": "120006",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768946514646",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120005",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768946482396",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120004",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768946125888",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120003",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768945392997",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120002",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768945021192",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "120001",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768944964427",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "90001",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768942873220",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "60001",
+      "title": "vggvggvvg",
+      "slug": "bbbbb",
+      "published": "0",
+      "featured": "0"
+    },
+    {
+      "id": "30002",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768686904733",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "30001",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768686488676",
+      "published": "1",
+      "featured": "0"
+    },
+    {
+      "id": "3",
+      "title": "Test Blog Post",
+      "slug": "test-blog-post-1768685007627",
+      "published": "1",
+      "featured": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tpublished\tfeatured\n120010\tbc b bb c\tb b b b \t0\t0\n120009\tUpdated Title\ttest-blog-update-1768946550049\t0\t0\n120008\tTest Blog Post\ttest-blog-post-1768946549299\t1\t0\n120007\tUpdated Title\ttest-blog-update-1768946515399\t0\t0\n120006\tTest Blog Post\ttest-blog-post-1768946514646\t1\t0\n120005\tTest Blog Post\ttest-blog-post-1768946482396\t1\t0\n120004\tTest Blog Post\ttest-blog-post-1768946125888\t1\t0\n120003\tTest Blog Post\ttest-blog-post-1768945392997\t1\t0\n120002\tTest Blog Post\ttest-blog-post-1768945021192\t1\t0\n120001\tTest Blog Post\ttest-blog-post-1768944964427\t1\t0\n90001\tTest Blog Post\ttest-blog-post-1768942873220\t1\t0\n60001\tvggvggvvg\tbbbbb\t0\t0\n30002\tTest Blog Post\ttest-blog-post-1768686904733\t1\t0\n30001\tTest Blog Post\ttest-blog-post-1768686488676\t1\t0\n3\tTest Blog Post\ttest-blog-post-1768685007627\t1\t0\n",
+  "stderr": "",
+  "execution_time_ms": 366
+}
