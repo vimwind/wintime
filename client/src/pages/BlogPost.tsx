@@ -2,6 +2,7 @@ import { useRoute, Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
+import { trpc } from '@/lib/trpc';
 
 /**
  * Blog Post Page - Individual blog post display
@@ -10,9 +11,9 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 export default function BlogPost() {
   const [match, params] = useRoute('/blog/:id');
+  const { data: allBlogPostsData } = trpc.blog.list.useQuery();
 
-  // Mock blog posts data - in production, fetch from API
-  const allBlogPosts = [
+  const fallbackBlogPosts = [
     {
       id: '1',
       title: 'Trendy Hair Color Ideas for the Season',
@@ -136,7 +137,18 @@ export default function BlogPost() {
     },
   ];
 
-  const post = allBlogPosts.find(p => p.id === params?.id);
+  const allBlogPosts = (allBlogPostsData && allBlogPostsData.length > 0)
+    ? allBlogPostsData.map((post: any) => ({
+        ...post,
+        id: String(post.id),
+        date: new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+        readTime: post.readTime || '5 min read',
+        image: post.image || '/images/services-hair.jpg',
+        category: 'Beauty',
+      }))
+    : fallbackBlogPosts;
+
+  const post = allBlogPosts.find((p: any) => p.id === params?.id);
 
   if (!match || !post) {
     return (
@@ -154,9 +166,8 @@ export default function BlogPost() {
     );
   }
 
-  // Get related posts (same category, different post)
   const relatedPosts = allBlogPosts
-    .filter(p => p.id !== post.id)
+    .filter((p: any) => p.id !== post?.id)
     .slice(0, 3);
 
   return (

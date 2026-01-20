@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import { trpc } from '@/lib/trpc';
 
 /**
  * Blog Page - Beauty tips and articles
@@ -8,7 +9,9 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
  */
 
 export default function Blog() {
-  const blogPosts = [
+  const { data: dbBlogPosts } = trpc.blog.list.useQuery({ published: true });
+
+  const fallbackBlogPosts = [
     {
       id: 1,
       title: 'Trendy Hair Color Ideas for the Season',
@@ -77,8 +80,18 @@ export default function Blog() {
     },
   ];
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  const blogPosts = (dbBlogPosts && dbBlogPosts.length > 0) 
+    ? dbBlogPosts.map((post: any) => ({
+        ...post,
+        featured: post.featured === 1,
+        date: new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+        readTime: post.readTime || '5 min read',
+        image: post.image || '/images/services-hair.jpg',
+      }))
+    : fallbackBlogPosts;
+
+  const featuredPost = blogPosts.find((post: any) => post.featured);
+  const regularPosts = blogPosts.filter((post: any) => !post.featured);
 
   return (
     <div className="min-h-screen bg-background">

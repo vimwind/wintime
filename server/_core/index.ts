@@ -7,6 +7,10 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import multer from "multer";
+import path from "path";
+import { storagePut } from "../storage";
+import type { Request, Response } from "express";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -35,6 +39,37 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+
+  // File upload endpoint
+  const upload = multer({ storage: multer.memoryStorage() });
+  app.post("/api/upload", upload.single("file"), async (req: Request & { file?: Express.Multer.File }, res: Response) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ error: "No file provided" });
+      }
+
+      if (req.file.size > 5 * 1024 * 1024) {
+        return res.status(400).json({ error: "File size exceeds 5MB limit" });
+      }
+
+      const allowedMimes = ["image/jpeg", "image/png", "image/webp"];
+      if (!allowedMimes.includes(req.file.mimetype)) {
+        return res.status(400).json({ error: "Invalid file type" });
+      }
+
+      const fileName = `blog-${Date.now()}${path.extname(req.file.originalname)}`;
+      const { url } = await storagePut(
+        `blog-images/${fileName}`,
+        req.file.buffer,
+        req.file.mimetype
+      );
+
+      res.json({ url });
+    } catch (error) {
+      console.error("Upload error:", error);
+      res.status(500).json({ error: "Upload failed" });
+    }
+  });
   // tRPC API
   app.use(
     "/api/trpc",
