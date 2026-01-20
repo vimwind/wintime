@@ -19,6 +19,8 @@ export default function BlogManagement() {
     author: "",
     image: "",
     readTime: "",
+    metaDescription: "",
+    keywords: "",
     featured: 0,
     published: 0,
   });
@@ -86,6 +88,8 @@ export default function BlogManagement() {
         author: "",
         image: "",
         readTime: "",
+        metaDescription: "",
+        keywords: "",
         featured: 0,
         published: 0,
       });
@@ -196,6 +200,47 @@ export default function BlogManagement() {
                 </div>
               </div>
 
+              {/* SEO Section */}
+              <div className="border border-border rounded-lg p-4 bg-muted/30">
+                <h3 className="font-semibold text-sm mb-4">SEO Optimization</h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">
+                      Meta Description
+                      <span className="text-xs text-muted-foreground ml-2">
+                        ({(formData.metaDescription as string).length}/160)
+                      </span>
+                    </label>
+                    <Textarea
+                      value={formData.metaDescription}
+                      onChange={(e) => {
+                        const value = e.target.value.slice(0, 160);
+                        setFormData({ ...formData, metaDescription: value });
+                      }}
+                      placeholder="Brief description for search engines (150-160 characters recommended)"
+                      rows={2}
+                      maxLength={160}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {(formData.metaDescription as string).length < 120 && "Too short. Aim for 150-160 characters."}
+                      {(formData.metaDescription as string).length >= 120 && (formData.metaDescription as string).length <= 160 && "✓ Good length"}
+                      {(formData.metaDescription as string).length > 160 && "Too long"}
+                    </p>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Keywords</label>
+                    <Input
+                      value={formData.keywords}
+                      onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
+                      placeholder="Comma-separated keywords (e.g., hair salon, beauty services, styling)"
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Separate multiple keywords with commas
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Image Upload Section */}
               <div className="border-2 border-dashed border-border rounded-lg p-6">
                 <div className="space-y-3">
@@ -277,6 +322,8 @@ export default function BlogManagement() {
                       author: "",
                       image: "",
                       readTime: "",
+                      metaDescription: "",
+                      keywords: "",
                       featured: 0,
                       published: 0,
                     });

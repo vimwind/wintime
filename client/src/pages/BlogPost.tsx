@@ -1,4 +1,5 @@
 import { useRoute, Link } from 'wouter';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -149,6 +150,20 @@ export default function BlogPost() {
     : fallbackBlogPosts;
 
   const post = allBlogPosts.find((p: any) => p.id === params?.id);
+
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} | Beautyeo Salon`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.metaDescription || post.excerpt || '');
+      }
+      const metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) {
+        metaKeywords.setAttribute('content', post.keywords || '');
+      }
+    }
+  }, [post]);
 
   if (!match || !post) {
     return (

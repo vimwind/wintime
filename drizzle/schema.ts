@@ -37,6 +37,8 @@ export const blogPosts = mysqlTable("blogPosts", {
   author: varchar("author", { length: 255 }).notNull(),
   image: varchar("image", { length: 500 }),
   readTime: varchar("readTime", { length: 50 }),
+  metaDescription: varchar("metaDescription", { length: 160 }),
+  keywords: varchar("keywords", { length: 500 }),
   featured: int("featured").default(0).notNull(),
   published: int("published").default(0).notNull(),
   publishedAt: timestamp("publishedAt"),
