@@ -216,3 +216,40 @@ describe("Admin Panel - Analytics", () => {
     expect(result).toEqual({ success: true });
   });
 });
+
+
+describe("Admin Panel - Blog Update Test", () => {
+  it("should allow admin to update a blog post", async () => {
+    const ctx = createAdminContext();
+    const caller = appRouter.createCaller(ctx);
+    const uniqueSlug = `test-blog-update-${Date.now()}`;
+
+    const created = await caller.blog.create({
+      title: "Original Title",
+      slug: uniqueSlug,
+      excerpt: "Original excerpt",
+      content: "Original content",
+      author: "Test Author",
+      metaDescription: "Original meta",
+      keywords: "test",
+    });
+
+    expect(created).toEqual({ success: true });
+
+    const posts = await caller.blog.list();
+    const postId = posts.find((p: any) => p.slug === uniqueSlug)?.id;
+
+    const updateResult = await caller.blog.update({
+      id: postId,
+      title: "Updated Title",
+      metaDescription: "Updated meta description",
+    });
+
+    expect(updateResult).toEqual({ success: true });
+
+    const updatedPosts = await caller.blog.list();
+    const updatedPost = updatedPosts.find((p: any) => p.id === postId);
+    expect(updatedPost?.title).toBe("Updated Title");
+    expect(updatedPost?.metaDescription).toBe("Updated meta description");
+  });
+});

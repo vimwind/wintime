@@ -80,7 +80,9 @@ export const appRouter = router({
           throw new Error('Unauthorized: Admin access required');
         }
         const { id, ...data } = input;
+        console.log(`[Router] Blog update request for post ${id}`);
         await updateBlogPost(id, data);
+        console.log(`[Router] Blog update completed for post ${id}`);
         return { success: true };
       }),
     

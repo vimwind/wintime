@@ -70,6 +70,7 @@ export default function BlogManagement() {
 
     try {
       if (editingId) {
+        console.log('Updating blog post:', { id: editingId, ...formData });
         await updateMutation.mutateAsync({
           id: editingId,
           ...formData,
@@ -95,7 +96,9 @@ export default function BlogManagement() {
       });
       setIsCreating(false);
       setEditingId(null);
+      console.log('Refetching blog posts...');
       await refetch();
+      console.log('Blog posts refetched');
     } catch (error) {
       console.error("Error saving blog post:", error);
       toast.error("Failed to save blog post");

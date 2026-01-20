@@ -123,10 +123,21 @@ export async function createBlogPost(post: InsertBlogPost) {
 export async function updateBlogPost(id: number, post: Partial<InsertBlogPost>) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.update(blogPosts).set({
-    ...post,
-    updatedAt: new Date(),
-  }).where(eq(blogPosts.id, id));
+  
+  console.log(`[Database] Updating blog post ${id}:`, post);
+  
+  try {
+    const result = await db.update(blogPosts).set({
+      ...post,
+      updatedAt: new Date(),
+    }).where(eq(blogPosts.id, id));
+    
+    console.log(`[Database] Blog post ${id} updated successfully`);
+    return result;
+  } catch (error) {
+    console.error(`[Database] Failed to update blog post ${id}:`, error);
+    throw error;
+  }
 }
 
 export async function deleteBlogPost(id: number) {
