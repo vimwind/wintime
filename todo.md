@@ -47,5 +47,13 @@
 
 
 ## Deployment
-- [ ] Push project to GitHub
+- [x] Push project to GitHub - Pushed to vimwind/wintime
 - [ ] Deploy to Vercel
+
+
+## Vercel Deployment Fix
+- [ ] Create vercel.json configuration for serverless deployment
+- [ ] Update build configuration for Vercel
+- [ ] Create API route handler for tRPC
+- [ ] Configure static file serving
+- [ ] Test deployment on Vercel
